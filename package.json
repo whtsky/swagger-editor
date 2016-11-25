@@ -39,6 +39,8 @@
     "brace": "^0.8.0",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
+    "electron": "^1.4.8",
+    "electron-packager": "^8.3.0",
     "es6-promise": "^3.1.2",
     "es6-shim": "^0.35.0",
     "eslint": "^2.13.1",
@@ -101,15 +103,16 @@
     "node": ">=5.8.0"
   },
   "scripts": {
-    "clean": "rm -rf dist/**",
+    "clean": "rm -rf app/dist/**",
     "prebuild": "npm run clean",
-    "build": "webpack --production --hide-modules --stats=errors-only",
+    "build": "webpack --production --hide-modules",
     "unit-test": "karma start test/unit/karma.conf.js --single-run=true",
     "unit-test-watch": "karma start test/unit/karma.conf.js",
     "pree2e-test": "webdriver-manager update",
     "e2e-test": "protractor test/e2e/protractor.config.js",
     "test": "npm run unit-test && npm run e2e-test",
     "lint": "eslint . --format 'node_modules/eslint-friendly-formatter'",
-    "gh-pages": "./gh-pages.sh"
+    "gh-pages": "./gh-pages.sh",
+    "electron": "electron app/main.js"
   }
 }

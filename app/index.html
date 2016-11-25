@@ -1,0 +1,60 @@
+<!doctype html>
+  <head>
+    <meta charset="utf-8">
+    <title>Swagger Editor</title>
+    <meta name="description" content="Swagger Editor">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" href="./images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./images/favicon-16x16.png" sizes="16x16" />
+    <link rel="stylesheet" href="dist/styles.css">
+  </head>
+  <body>
+    <div class="total-wrapper" ui-view></div>
+    <script>
+      window.$$embeddedDefaults = {
+        "codegen": {
+          "servers": "http://generator.swagger.io/api/gen/servers",
+          "clients": "http://generator.swagger.io/api/gen/clients",
+          "server": "http://generator.swagger.io/api/gen/servers/{language}",
+          "client": "http://generator.swagger.io/api/gen/clients/{language}"
+        },
+        "analytics": {
+          "google": {
+            "id": "UA-51231036-1"
+          }
+        },
+        "disableCodeGen": false,
+        "examplesFolder": "spec-files/",
+        "editorOptions": {
+          "theme": "ace/theme/atom_dark"
+        },
+        "exampleFiles": [
+          "default.yaml",
+          "heroku-pets.yaml",
+          "minimal.yaml",
+          "echo.yaml",
+          "petstore_simple.yaml",
+          "petstore_full.yaml",
+          "basic-auth.yaml",
+          "security.yaml",
+          "instagram.yaml",
+          "twitter.yaml"
+        ],
+        "autocompleteExtension": {},
+        "useBackendForStorage": false,
+        "backendThrottle": 200,
+        "keyPressDebounceTime": 200,
+        "backendEndpoint": "/editor/spec",
+        "useYamlBackend": false,
+        "disableFileMenu": false,
+        "headerBranding": false,
+        "disableNewUserIntro": false,
+        "enableTryIt": true,
+        "brandingCssClass": "",
+        "importProxyUrl": "https://cors-it.herokuapp.com/?url=",
+        "pointerResolutionBasePath": null
+      }
+    </script>
+    <script src="dist/bundle.js"></script>
+</body>
+</html>

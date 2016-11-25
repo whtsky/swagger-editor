@@ -8,21 +8,21 @@ var argv = require('minimist')(process.argv.slice(2));
 var FONT_REGEX = /\.(ttf|eot|svg|woff|woff2|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/;
 
 var config = {
-  devtool: 'source-map',
+  devtool: argv.production ? false : 'source-map',
 
   entry: {
-    app: ['./index.js']
+    app: ['./src/index.js']
   },
 
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'app/dist'),
     filename: 'bundle.js',
     publicPath: 'dist/'
   },
 
   resolve: {
     extensions: ['', '.js', '.json'],
-    root: __dirname,
+    root: path.join(__dirname, 'src'),
     modulesDirectories: ['node_modules']
   },
 
@@ -52,9 +52,9 @@ var config = {
       {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract(
-                    'css?sourceMap' +
+                    'css' +
                     // minimize CSS in producion
-                    (argv.production ? '&minimize' : '') +
+                    (argv.production ? '&minimize' : '?sourceMap') +
                     '!less?sourceMap'
         )
       },
@@ -88,12 +88,17 @@ var config = {
   }
 };
 
-// if --production is passed, ng-annotate and uglify the code
 if (argv.production) {
   console.info('This might take a while...');
 
-  config.plugins.unshift(new webpack.optimize.UglifyJsPlugin({mangle: true}));
+  config.plugins.unshift(new webpack.optimize.UglifyJsPlugin({
+    mangle: true,
+    compress: {
+      warnings: false
+    }
+  }));
   config.plugins.unshift(new NgAnnotatePlugin({add: true}));
+  config.plugins.unshift(new webpack.optimize.OccurenceOrderPlugin());
   config.plugins.unshift(new webpack.NoErrorsPlugin());
 }
 
