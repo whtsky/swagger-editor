@@ -1,5 +1,5 @@
 node_modules/**/*
 dist/**/*
-src/scripts/analytics/google.js
-src/scripts/plugins/*
+app/**/*
+app/*
 src/scripts/ace/themes/theme-atom_dark.js

@@ -1,8 +1,3 @@
-'use strict';
-
-var jQuery = require('jquery');
-var $ = jQuery;
-
 /*!
  * $.fn.scrollIntoView - similar to the default browser scrollIntoView
  * The default browser behavior always places the element at the top or bottom of its container.

@@ -64,12 +64,8 @@ require('scripts/enums/strings.js');
 // Filter
 require('scripts/filters/formdata.js');
 
-// Plugins
-require('scripts/plugins/jquery.scroll-into-view.js');
-
 // Misc
 require('scripts/ace/snippets/swagger.snippet.js');
-require('scripts/analytics/google.js');
 
 // Ace Editor
 window.ace = require('brace');

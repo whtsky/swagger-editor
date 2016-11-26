@@ -6,11 +6,21 @@
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/png" href="./images/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="./images/favicon-16x16.png" sizes="16x16" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="dist/styles.css">
+    <script>
+      window.nodeRequire = require;
+      delete window.require;
+      delete window.exports;
+      delete window.module;
+    </script>
   </head>
   <body>
     <div class="total-wrapper" ui-view></div>
     <script>
+      const path = nodeRequire('path')
       window.$$embeddedDefaults = {
         "codegen": {
           "servers": "http://generator.swagger.io/api/gen/servers",
@@ -24,7 +34,7 @@
           }
         },
         "disableCodeGen": false,
-        "examplesFolder": "spec-files/",
+        "examplesFolder": `file://${path.join(__dirname, "spec-files")}/`,
         "editorOptions": {
           "theme": "ace/theme/atom_dark"
         },
@@ -55,6 +65,8 @@
         "pointerResolutionBasePath": null
       }
     </script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery.scroll-into-view.js"></script>
     <script src="dist/bundle.js"></script>
 </body>
 </html>

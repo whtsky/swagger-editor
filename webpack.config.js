@@ -30,6 +30,11 @@ var config = {
     new ExtractTextPlugin('styles.css')
   ],
 
+  externals: {
+    jquery: "jQuery",
+    $: "jQuery"
+  },
+
   eslint: {
     configFile: './.eslintrc.js'
   },
@@ -54,7 +59,7 @@ var config = {
         loader: ExtractTextPlugin.extract(
                     'css' +
                     // minimize CSS in producion
-                    (argv.production ? '&minimize' : '?sourceMap') +
+                    (argv.production ? '?minimize' : '?sourceMap') +
                     '!less?sourceMap'
         )
       },
