@@ -1,9 +1,9 @@
 <div class="main-header">
-
+<!--
   <a href="http://swagger.io" target="_blank" class="logo" ng-if="!showHeaderBranding()"></a>
 
   <div ng-include="'templates/branding-left.html'" ng-if="showHeaderBranding()" class="branding-3rdparty"></div>
-
+-->
   <section class="menu-bar">
     <div class="file dropdown" uib-dropdown ng-if="showFileMenu()">
       <button
@@ -81,8 +81,7 @@
         </li>
       </ul>
     </div>
-
-    <!-- Handling of Code Generator service availability issues -->
+<!-- Handling of Code Generator service availability issues
     <span
       class=" text-danger dropdown-toggle"
       ng-if="serversNotAvailable">
@@ -93,7 +92,7 @@
       ng-if="clientsNotAvailable">
         Client code generator is unreachable!
     </span>
-
+-->
     <div class="dropdown" uib-dropdown ng-if="servers && servers.length && !disableCodeGen">
       <button class="btn btn-default" id="ServerMenu" uib-dropdown-toggle>
         <span>Generate Server</span>
