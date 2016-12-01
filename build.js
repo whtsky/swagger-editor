@@ -38,7 +38,7 @@ platforms.macos = () => {
 platforms.windows = () => {
   packager(Object.assign({}, defaults, {
     platform: 'win32',
-    arch: 'ia32',
+    arch: 'x64',
     icon: './build/icon.ico',
     'version-string': {
       productName: pkg.productName
