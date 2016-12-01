@@ -101,9 +101,8 @@
     "gh-pages": "./gh-pages.sh",
     "electron": "electron app/main.js",
 
-    "pack:mac": "electron-packager app/ --out=dist/mac --platform=darwin --arch=x64"
-  },
-  "build": {
-    "appId": "me.whtsky.swagger-editor"
+    "pack": "node build.js",
+    "pack:mac": "node build.js macos",
+    "pack:windows": "node build.js windows"
   }
 }
