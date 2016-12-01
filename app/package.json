@@ -1,0 +1,14 @@
+{
+  "name": "swagger-editor",
+  "productName": "Swagger Editor",
+  "version": "2.10.4",
+  "description": "Swagger Editor",
+  "author": {
+    "name": "Wu Haotian",
+    "email": "whtsky@gmail.com"
+  },
+  "homepage": "https://github.com/whtsky/swagger-editor",
+  "main": "main.js",
+  "scripts": {},
+  "license": "Apache-2.0"
+}

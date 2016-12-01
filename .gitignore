@@ -12,3 +12,5 @@ buttons.diff
 .idea
 *.iml
 *.zip
+
+dist/
