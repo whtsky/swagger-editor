@@ -28,6 +28,7 @@
     "angular-ui-bootstrap": "^1.2.5",
     "angular-ui-layout": "^1.4.2",
     "angular-ui-router": "^0.3.1",
+    "archiver": "^1.2.0",
     "brace": "^0.8.0",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
@@ -100,7 +101,6 @@
     "lint": "eslint . --format 'node_modules/eslint-friendly-formatter'",
     "gh-pages": "./gh-pages.sh",
     "electron": "electron app/main.js",
-
     "pack": "node build.js",
     "pack:mac": "node build.js macos",
     "pack:windows": "node build.js windows"

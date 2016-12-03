@@ -1,17 +1,21 @@
 /* eslint-disable quote-props */
 
 const minimist = require('minimist');
+const fs = require('fs');
 const packager = require('electron-packager');
+const path = require('path');
+const archiver = require('archiver');
 const pkg = require('./package.json');
 
 const args = minimist(process.argv.slice(2));
 const target = args._[0] || 'all';
+const distPath = path.join(__dirname, "dist");
 
 const platforms = {};
 const defaults = {
   dir: './app',
   'app-version': pkg.version,
-  out: 'dist/',
+  out: distPath,
   overwrite: true,
   prune: true
 };
@@ -21,7 +25,6 @@ const cb = (err, paths) => {
     console.log(err.message);
     process.exit(1);
   }
-  if (paths) console.log(paths.join('\n'));
 };
 
 platforms.macos = () => {
@@ -32,6 +35,13 @@ platforms.macos = () => {
     icon: './build/icon.icns'
   }), (err, paths) => {
     cb(err, paths);
+    const output = fs.createWriteStream(
+      path.join(distPath, "Swagger Editor-macOS.zip")
+    );
+    const archive = archiver('zip');
+    archive.pipe(output);
+    archive.directory(path.join(paths[0], "Swagger Editor.app"), "Swagger Editor.app");
+    archive.finalize();
   });
 };
 
@@ -45,6 +55,13 @@ platforms.windows = () => {
     }
   }), (err, paths) => {
     cb(err, paths);
+    const output = fs.createWriteStream(
+      path.join(distPath, "Swagger Editor-Windows.zip")
+    );
+    const archive = archiver('zip');
+    archive.pipe(output);
+    archive.directory(paths[0], "Swagger Editor");
+    archive.finalize();
   });
 };
 
