@@ -1,0 +1,10 @@
+version: 1.0.{build}
+build_script:
+- cmd: >-
+    yarn
+    yarn build
+    yarn pack:mac
+    yarn pack:windows
+test: off
+artifacts:
+  - path: dist/*.zip
