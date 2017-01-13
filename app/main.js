@@ -1,6 +1,5 @@
 const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const {app, BrowserWindow, ipcMain, dialog} = electron;
 
 const path = require('path');
 const url = require('url');
@@ -34,4 +33,14 @@ app.on('activate', function() {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+ipcMain.on('open-file-dialog', function (event) {
+  dialog.showOpenDialog({
+    properties: ['openFile']
+  }, function (files) {
+    if (files && files[0]) {
+      event.sender.send('selected-file', files[0]);
+    }
+  })
 });

@@ -98,6 +98,22 @@ SwaggerEditor.controller('HeaderCtrl', function HeaderCtrl($scope, $uibModal,
     $rootScope.$broadcast('toggleWatchers', false);
   };
 
+  $scope.openFile = function() {
+    window.electron.ipcRenderer.send('open-file-dialog');
+  };
+
+  window.electron.ipcRenderer.on('selected-file', function(event, path) {
+    FileLoader.loadFromUrl(path).then(function(value) {
+      $rootScope.editorValue = value;
+      Storage.save('yaml', value);
+      $state.go('home', {tags: null});
+    });
+  });
+
+  $scope.openURL = function(url) {
+    window.electron.shell.openExternal(url);
+  };
+
   $scope.openImportFile = function() {
     $uibModal.open({
       template: require('templates/file-import.html'),

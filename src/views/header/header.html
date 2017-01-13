@@ -30,8 +30,13 @@
           <a dropdown-toggle ng-click="openImportUrl()" tabindex="-1" track-event="file import url"><i class="fa fa-link"></i>&nbsp;<span>Import URL&hellip;</span></a>
         </li>
         <li>
+          <a dropdown-toggle ng-click="openFile()" tabindex="-1" track-event="file open file"><i class="fa fa-file highlighted"></i>&nbsp;<span>Open File&hellip;</span></a>
+        </li>
+<!--
+        <li>
           <a dropdown-toggle ng-click="openImportFile()" tabindex="-1" track-event="file import file"><i class="fa fa-file highlighted"></i>&nbsp;<span>Import File&hellip;</span></a>
         </li>
+-->
         <li class="divider"></li>
         <li>
           <a download="swagger.yaml" data-downloadurl="{{yamlDownloadUrl}}"
@@ -132,13 +137,13 @@
 
       <ul class="dropdown-menu" uib-dropdown-menu>
         <li>
-          <a tabindex="-1" href="https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md" target="_blank">
+          <a tabindex="-1" ng-click="openURL('https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md')">
             <i class="fa fa-align-justify"></i>&nbsp;
             <span>Swagger 2.0 Specs</span>
           </a>
         </li>
         <li>
-          <a tabindex="-1" href="http://swagger.io/" target="_blank">
+          <a tabindex="-1" ng-click="openURL('http://swagger.io/')">
             <i class="fa fa-share-square-o"></i>&nbsp;
             <span>Swagger Website</span>
           </a>
@@ -151,7 +156,7 @@
         </li>
         <li class="divider"></li>
         <li>
-          <a href="https://github.com/swagger-api/swagger-editor/issues/new?labels=From%20Editor" target="_blank">
+          <a ng-click="openURL('https://github.com/whtsky/swagger-editor/issues/new?labels=From%20Editor')">
             <i class="fa fa-bug highlighted"></i>&nbsp;
             <span>Report A Bug</span>
           </a>

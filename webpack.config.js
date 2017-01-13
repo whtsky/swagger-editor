@@ -3,7 +3,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
+// var NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
 var argv = require('minimist')(process.argv.slice(2));
 var FONT_REGEX = /\.(ttf|eot|svg|woff|woff2|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/;
 
@@ -32,7 +32,8 @@ var config = {
 
   externals: {
     jquery: "jQuery",
-    $: "jQuery"
+    $: "jQuery",
+    electron: "electron"
   },
 
   eslint: {
@@ -97,12 +98,12 @@ if (argv.production) {
   console.info('This might take a while...');
 
   config.plugins.unshift(new webpack.optimize.UglifyJsPlugin({
-    mangle: true,
+    mangle: false,
     compress: {
       warnings: false
     }
   }));
-  config.plugins.unshift(new NgAnnotatePlugin({add: true}));
+  // config.plugins.unshift(new NgAnnotatePlugin({add: true}));
   config.plugins.unshift(new webpack.optimize.OccurenceOrderPlugin());
   config.plugins.unshift(new webpack.NoErrorsPlugin());
 }
